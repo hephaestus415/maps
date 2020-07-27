@@ -1,0 +1,41 @@
+#include <iostream>
+#include <map>
+#include <iterator>
+
+using namespace std;
+
+
+int main()
+{
+    map <string, int> words;
+    words.insert(pair <string, int> ("hey this bitch hates me", 12) );
+    cout << words["hey this bitch hates me"] << endl;
+    
+    words.insert(pair <string, int> ("hye this is a good song tonight", 13) );
+    
+    cout << endl;
+    
+    
+    for (map <string, int> :: iterator iter = words.begin(); iter != words.end(); ++iter){
+        cout << iter -> first << " " << iter -> second << endl;
+        
+    }
+    
+    
+    cout << endl;
+    
+    map <string, int> numbers; 
+    numbers.insert(pair <string, int> ("this kye no value", 2));
+    
+    
+    //this way the key with no value give an error.
+    
+    
+    
+
+    
+    
+    
+    
+    return 0;
+}
