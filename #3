@@ -1,0 +1,32 @@
+#include <iostream>
+#include <iterator>
+#include <map>
+#include <string>
+
+using namespace std;
+
+
+
+int
+main ()
+{
+  string s;
+  map < string, int >counters;
+  while (cin >> s)		//it's not the map doing the stuff?
+    ++counters[s];
+
+
+
+  cout << endl;
+
+
+  for (map < string, int >::iterator iter = counters.begin ();
+       iter != counters.end (); ++iter)
+    {
+      cout << iter->first << " " << iter->second << endl;
+
+    }
+
+  return 0;
+
+}
