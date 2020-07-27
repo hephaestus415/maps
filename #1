@@ -11,7 +11,17 @@ int main()
     words.insert(pair <string, int> ("hey this bitch hates me", 12) );
     cout << words["hey this bitch hates me"] << endl;
     
-    words.insert(pair <string, int> ("hye this is a good song tonight", 13) );
+    words.insert(pair <string, int> ("hye this is a good song tonight", 13) );  //one way to insert.
+    
+    words ["keys"] = 13;  //good. 
+    cout << endl;
+    
+    words["second"];
+    ++words["second"];
+    
+    
+    cout << words["second"] << endl;
+    
     
     cout << endl;
     
@@ -30,12 +40,7 @@ int main()
     
     //this way the key with no value give an error.
     
-    
-    
-
-    
-    
-    
+ 
     
     return 0;
 }
