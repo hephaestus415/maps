@@ -1,0 +1,34 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include <iterator>
+
+using namespace std;
+
+
+
+int main()
+{
+    string s;
+    map <string, int> words;
+    words["hey"] = 0;
+     words ["hey"] = 1;
+    
+    words["hey"] = 2;
+    
+    
+    words.insert(pair <string, int> ("hey", 5));  //this way the value doesn't get updated 
+    
+    words["hey"] = 3;  //this way, it doese.
+    //fuckin insert function is not a good thing. eh?
+    
+    cout << words["hey"] << endl;
+    
+     
+     for (map <string, int> :: iterator iter = words.begin(); iter != words.end(); ++iter){
+         cout << iter -> first << " " << iter -> second << endl;
+     }
+    
+    return 0;
+    
+}
