@@ -1,0 +1,75 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+#include <iterator>
+
+#include <cctype>
+using namespace std;
+
+
+
+vector <string> split (string& s){
+    vector <string> ret;
+    int i =0;
+    while (i != s.size()){
+        while (i != s.size() && isspace(s[i])){
+            ++i;
+        }
+        int j = i;
+        while (j != s.size() && !isspace(s[j])){
+            j++;
+            
+        }
+        if (i != j){
+            ret.push_back(s.substr(i, j - i));
+        }
+        i = j;
+        
+    }
+    return ret;
+    
+}
+
+
+//here you write the split without given it some stuff. the braces.
+map <string, vector <int> > xref(istream& in, vector <string> find_words (string& s)  = split){
+    map <string, vector <int> > ret;
+    
+    string line;
+    int line_number;
+    while (getline(in, line)){
+        ++line_number;
+        
+        vector <string> words = find_words(line);
+        
+        for (vector <string> :: iterator it = words.begin(); it != words.end(); ++it){
+            ret[*it].push_back(line_number);
+        }
+        
+    }
+    return ret;
+    
+
+}
+
+
+
+int main()
+{
+    
+    map <string, vector <int> > words = xref (cin, split);
+    
+    for (map <string, vector <int> > :: iterator it = words.begin(); it != words.end(); ++it){
+        cout << it -> first << " ";
+        vector <int> result = it -> second;
+        for (int j =0; j != result.size(); ++j){
+            cout << result[j] << endl;
+        }
+    }
+    
+ 
+    return 0;
+    
+    
+}
