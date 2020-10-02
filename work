@@ -1,0 +1,107 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+#include <iterator>
+
+using namespace std;
+
+
+
+
+typedef vector <string> rule;
+typedef vector <rule> rule_collection;
+typedef map<string, rule_collection> grammer;
+
+
+
+vector <string> split (string& s){
+    vector <string> ret;
+    int i =0;
+    while (i != s.size()){
+        while (i != s.size() && isspace(s[i])){
+            ++i;
+        }
+        int j = i;
+        while (j != s.size() && !isspace(s[j])){
+            j++;
+        }
+        if (i != j){
+            ret.push_back(s.substr(i, j - i));
+        }
+        i = j;
+    }
+    return ret;
+}
+
+
+grammer read_grammer (istream& in)
+{
+    
+    grammer ret;
+    string line;
+    while (getline(in, line)){
+        vector <string> entry = split(line);
+        
+        
+        if (!entry.empty()){
+            ret[entry[0]].push_back(vector <string> (entry.begin() + 1, entry.end()));  //I want to look at this separately.
+            
+        }
+        
+        
+    }
+    return ret;
+    
+}
+
+
+int main() 
+{
+    //map <string, vector <vector <string> > > read_grammer;
+    //string iterator i = 
+    
+    grammer ret;
+    
+    
+    vector <string> entry;
+    entry.push_back("hey");
+    entry.push_back("this is a goddamn check");
+    entry.push_back("for us to undrestand what all this is about");
+    vector <vector <string> > wow;
+    
+    wow.push_back(entry);
+    
+    wow.push_back(vector <string> (entry.begin() + 1, entry.end()));  //this is a bit interasting.
+    
+    
+     ret ["this"] = wow;
+    
+    
+    
+    //vector <vector <string> > ret;
+    //vector <string> (some.vector.begin() + 1, some.vector.end());
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    for (grammer :: iterator it = ret.begin(); it != ret.end(); ++it){
+        cout << it -> first << endl;
+        
+        vector <vector <string> > some = it -> second;
+        
+        for (int i = 0; i != some.size(); i++){
+            for (int j = 0; j != some[i].size(); j++){
+                cout << some[i][j] << endl;
+            }
+        }
+    }
+    
+    
+    return 0;
+}
