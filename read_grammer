@@ -1,0 +1,77 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+using namespace std;
+
+
+
+
+typedef vector <string> rule;
+typedef vector <rule> rule_collection;
+typedef map <string, rule_collection> grammer;
+
+
+
+vector <string> split (string& s){
+    vector <string> ret;
+    int i;
+    while (i != s.size()){
+        while (i != s.size() && isspace(s[i]))
+        {
+        ++i;
+        }
+        int j = i;
+        while (j != s.size() && !isspace(s[j])){
+            j++;
+        }
+        
+        if (i != j){
+            ret.push_back(s.substr(i, j - i));
+        }
+        i = j;
+        
+    }
+    return ret;
+    
+}
+
+
+//grammer ret;
+//ret  <string, vector   <vector <string> > rule_collection > grammer;
+
+//    ret[entry[0]] = vector <vector <string> > something;
+
+
+
+//something.push_back(vector <string> (entry.begin() + 1, entry.end() ) ;
+
+
+//so the all of this vector except the first element, in a form of a vector, in the collection of these vectors.
+//ok.
+
+
+
+
+
+grammer read_grammer (istream& in){
+    grammer ret;
+    string line;
+    
+    
+    while (getline(in, line))
+    {
+        vector <string> entry = split (line);
+        
+        ret[entry[0]].push_back(vector <string>(entry.begin()+1, entry.end()));
+        
+    }
+    return ret;
+    
+}
+
+
+
+int main() {
+    return 0;
+}
