@@ -1,0 +1,30 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include <iterator>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    map <string, string> something;
+    
+    
+    something["hey"] = "there";
+    something["there"] = "here";
+    something["here"] = "so fucked";
+    
+    
+    map <string, string>  :: iterator it = something.find("here");
+    
+    
+    
+    cout << it-> first << endl;   //either you should be there or it's a seg fault.
+    //good.
+    
+    
+    
+    
+        return 0;
+}
