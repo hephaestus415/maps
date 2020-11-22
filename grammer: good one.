@@ -1,0 +1,83 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <iterator>
+#include <vector>
+using namespace std;
+
+typedef vector <string> rule;
+typedef vector <rule> rule_collection;
+typedef map <string, rule_collection> grammer;
+
+
+vector <string> split (string& s){
+    vector <string> ret;
+
+        
+    int i = 0;
+    
+    while (i != s.size()){
+        while (i != s.size() && isspace(s[i])){
+            ++i;
+        }
+        int j = i;
+        while (j != s.size() && !isspace(s[j])){
+            ++j;
+        }
+        if (i != j){
+            ret.push_back(s.substr(i, j - i));
+        }
+        i = j;
+    }
+    return ret;
+    
+}
+
+
+grammer read_grammer (istream& in){
+    grammer ret;
+    string line;
+    
+    while (getline(in, line))
+    {
+        vector <string> entry = split(line);
+        
+        if (!entry.empty()){
+            ret[entry[0]].push_back(vector<string>(entry.begin() +1, entry.end()));
+        }
+        
+    }
+    
+    
+    return ret;
+}
+
+
+
+int main()
+{
+    map <string, rule_collection> ret = read_grammer(cin);
+    
+    cout << endl;
+    
+    cout << "are we running this??" << endl;
+    
+    
+    
+    for (map <string, rule_collection> :: iterator it = ret.begin(); it != ret.end(); ++it){
+        cout << it -> first << " "; 
+        
+        cout << endl;
+        
+        vector <vector <string> > sec = it -> second; //find this out.
+        for (int i = 0; i != sec.size(); i++){
+            for (int j = 0; j != sec[i].size(); j++){
+                cout << sec[i][j] << " ";
+            }
+        }
+        
+    }
+    //so is mapped to a vector of vectors the contents of which is "I hope we have not fucked up our lives"
+    
+    return 0;
+}
