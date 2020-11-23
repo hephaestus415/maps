@@ -1,0 +1,70 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+
+
+int main()
+{
+    vector <int> one = {1,2,3,};
+    vector <int> two = {4,5,6};
+    vector <int> three = {6,7,8};
+    
+    vector <vector <int> > stuff;
+    stuff.push_back(one);
+    stuff.push_back(two);
+    stuff.push_back(three);
+    
+    
+    
+    
+    
+    for (int i = 0; i != stuff.size(); i++){
+        for (int j = 0; j!= stuff[i].size(); j++){
+            cout << stuff[i][j] << " ";
+        }
+        
+    }
+    
+    
+    cout << endl;
+    
+    
+        
+      //wait a fucking second.
+    //i am trying to put a vector in a vector. like this, this won't work.
+    
+    
+    
+    
+    
+    
+    //but this will wprk.
+    copy(three.begin(), three.end(), back_inserter(one));
+    //now lets put the vector inside the vector of vectors
+    
+    
+    stuff.push_back(vector <int> (one.begin(), one.end()));
+    cout << endl;
+    
+    for (int i = 0; i != stuff.size(); i++){
+        for (int j = 0; j != stuff[i].size(); j++){
+            cout << stuff[i][j] << " ";
+        }
+    }
+    
+
+    cout << endl;
+    cout << endl;
+    
+    
+    for (int i = 0; i != one.size(); i++){
+        cout << one[i] << " ";
+    }
+
+    
+    return 0;
+    
+}
