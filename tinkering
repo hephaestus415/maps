@@ -1,0 +1,76 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+#include <iterator>
+
+
+using namespace std;
+
+typedef vector <string> rule;
+typedef vector <rule> rule_collection;
+typedef map <string, rule_collection> grammer;
+
+//look right here.
+
+
+int main(){
+    vector <vector <string> > fucked; 
+    grammer ret;
+    
+    ret["here"] =  fucked;
+    
+    vector <string> some;
+    
+    some.push_back("i am adding some shit");
+    some.push_back("right here because i want to");
+    some.push_back("nobody truly loves one another right here");
+    
+    fucked.push_back(vector <string> (some.begin(), some.end()));
+    
+    
+    vector <string> sec;
+    sec.push_back("here we are putting stuff");
+    sec.push_back("there we are putting stuff");
+    sec.push_back("inside some shit");
+    
+    fucked.push_back(vector <string> (sec.begin(),sec.end()));
+    
+    
+    for (int i = 0; i != fucked.size(); i++){
+        
+        for (int j = 0; j != fucked[i].size(); j++){
+            cout << fucked[i][j] << endl;
+            
+        }
+        
+        //second loop goes to the second vector.
+        cout << endl;
+        
+    }
+    
+    
+    
+    //lets try this with iterators.
+    
+    vector <vector <string> > :: iterator it;
+    
+    it = fucked.begin();
+    while (it != fucked.end()){
+        vector <string> :: iterator w = it -> first.begin();
+        while (w != first.end()){
+            cout << *w << endl;
+            ++w;
+            
+        }
+        
+    
+        cout << endl;
+        
+    }   
+    // solve the errors.
+    //try the printing with iterators.
+    
+  
+    return 0;
+}
